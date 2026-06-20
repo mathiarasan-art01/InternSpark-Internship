@@ -4,42 +4,32 @@
     <meta charset="UTF-8">
     <title>Smart File Organizer</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
-<div class="main-container">
+<div class="container">
 
     <!-- HEADER -->
-    <div class="header">
-        <div class="icon-box">
+    <header class="header">
+        <div class="logo">
             <i class="fas fa-folder-tree"></i>
         </div>
-        <h1>Smart File Organizer</h1>
-        <p>Organize your files automatically in seconds</p>
-    </div>
 
-    <!-- FORM CARD -->
+        <h1>Smart File Organizer</h1>
+        <p>Upload ZIP → Organize Files Automatically → Download Result</p>
+    </header>
+
+    <!-- UPLOAD CARD -->
     <div class="card">
 
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
 
-            <div class="input-box">
-                <i class="fas fa-folder"></i>
-                <input type="text"
-                       name="folder"
-                       placeholder="Enter Folder Path (e.g. C:\\Users\\Downloads)"
-                       required>
-            </div>
-
-            <div class="input-box">
-                <i class="fas fa-tag"></i>
-                <input type="text"
-                       name="prefix"
-                       placeholder="File Prefix (e.g. FILE)"
-                       value="FILE">
+            <div class="upload-box">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <input type="file" name="file" required>
             </div>
 
             <button type="submit">
@@ -50,49 +40,47 @@
 
     </div>
 
-    <!-- RESULT SECTION (BOTTOM UI) -->
+    <!-- RESULT -->
     {% if result %}
-    <div class="result-container">
+    <div class="result">
 
         {% if result.success %}
 
-        <h2 class="success-title">
-            <i class="fas fa-check-circle"></i> Task Completed Successfully
+        <h2 class="success">
+            <i class="fas fa-check-circle"></i> Organization Completed
         </h2>
 
         <div class="stats">
 
-            <div class="stat">
+            <div class="box">
                 <h3>{{ result.moved }}</h3>
                 <p>Files Moved</p>
             </div>
 
-            <div class="stat">
+            <div class="box">
                 <h3>{{ result.renamed }}</h3>
                 <p>Files Renamed</p>
             </div>
 
-            <div class="stat">
+            <div class="box">
                 <h3>{{ result.removed }}</h3>
                 <p>Folders Removed</p>
             </div>
 
-            <div class="stat">
+            <div class="box">
                 <h3>{{ result.duplicates }}</h3>
                 <p>Duplicates Found</p>
             </div>
 
         </div>
 
-        <div class="report-box">
-            <h3>📄 Report</h3>
-            <pre>{{ result.report }}</pre>
-        </div>
+        <a class="download-btn" href="/download/{{ result.download }}">
+            ⬇ Download Organized ZIP
+        </a>
 
         {% else %}
 
-        <div class="error-box">
-            <h2>❌ Error Occurred</h2>
+        <div class="error">
             <p>{{ result.error }}</p>
         </div>
 
@@ -101,12 +89,30 @@
     </div>
     {% endif %}
 
-    <!-- FOOTER -->
-    <div class="footer">
-        <p>Smart File Organizer • Flask Project</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <h3>Smart File Organizer</h3>
+
+        <p>
+            A Flask automation tool that organizes uploaded ZIP files into structured folders.
+        </p>
+
+        <div class="footer-meta">
+            ⚡ Built by <b>Madhiyarasu D D</b> • 🚀 Flask Project • 📁 Internship Task
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Smart File Organizer
+        </div>
+
     </div>
 
-</div>
+</footer>
 
 </body>
 </html>

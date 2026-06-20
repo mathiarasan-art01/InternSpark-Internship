@@ -1,37 +1,15 @@
 import os
 import shutil
 import hashlib
-import zipfile
-import logging
-from datetime import datetime
-
-logging.basicConfig(
-    filename="organizer.log",
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
-
-def create_backup(folder):
-    backup_name = f"backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}.zip"
-
-    with zipfile.ZipFile(backup_name, 'w', zipfile.ZIP_DEFLATED) as backup:
-        for root, _, files in os.walk(folder):
-            for file in files:
-                path = os.path.join(root, file)
-                backup.write(path)
-
-    logging.info(f"Backup created {backup_name}")
-    return backup_name
 
 
 def organize_files(folder):
-
     categories = {
         "Images": [".jpg", ".jpeg", ".png", ".gif"],
         "Documents": [".pdf", ".docx", ".txt"],
         "Audio": [".mp3", ".wav"],
         "Videos": [".mp4", ".avi"],
-        "Code": [".py", ".java", ".cpp"]
+        "Code": [".py", ".js", ".cpp"]
     }
 
     moved = 0
@@ -73,7 +51,7 @@ def remove_empty_folders(folder):
     for root, dirs, _ in os.walk(folder, topdown=False):
         for d in dirs:
             p = os.path.join(root, d)
-            if not os.listdir(p):
+            if os.path.exists(p) and not os.listdir(p):
                 os.rmdir(p)
                 removed += 1
 
@@ -100,21 +78,3 @@ def find_duplicates(folder):
                 pass
 
     return duplicates
-
-
-def generate_report(moved, renamed, removed, duplicates):
-    report = f"""
-SMART FILE ORGANIZER REPORT
-
-Moved: {moved}
-Renamed: {renamed}
-Empty folders removed: {removed}
-Duplicates: {len(duplicates)}
-
-Time: {datetime.now()}
-"""
-
-    with open("report.txt", "w", encoding="utf-8") as f:
-        f.write(report)
-
-    return report

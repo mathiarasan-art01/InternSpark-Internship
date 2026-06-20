@@ -1,5 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+# 🚀 InternSpark-Internship
+
+🚀 InternSpark Internship Projects Portfolio — A collection of 3 real-world Python & Flask projects: Automation Tool, WeatherSphere API App, and TaskNest Productivity Manager. Features include REST API integration, SQLite database, file automation, analytics, PDF reports, and responsive UI. Built for deployment & learning excellence.
+
+---
+
 # 🚀 Python Internship Projects
 
 Welcome to my Python Internship Project Repository.
@@ -27,26 +31,52 @@ Python-Intern/
 ├── Task2-Weather-API/
 ├── Task3-Flask-Todo-App/
 └── README.md
-```
+````
 
 ---
 
-## 🔹 Task 1 - Python Automation Script
+## 🔹 Task 1 - Python Automation Script (UPDATED VERSION)
 
-### Features
-- File Organization Automation
-- User Input Support
-- Logging System
-- Exception Handling
-- Automated File Sorting
+### 📌 Overview
 
-### Technologies
-- Python
-- OS Module
-- Logging
-- File Handling
+Task 1 is a **Smart File Organizer Automation System** built using Python and Flask.
+It now supports **cloud-compatible ZIP upload processing**, making it deployable on platforms like Render.
 
-📁 Folder:
+The system automatically organizes uploaded files into categorized folders, creates backups, detects duplicates, removes empty folders, and generates downloadable output ZIP files.
+
+---
+
+### 🚀 Features
+
+* 📦 ZIP File Upload System
+* 📁 Automatic File Organization
+* 🔄 Bulk File Renaming
+* 🧹 Empty Folder Cleanup
+* 🔍 Duplicate File Detection (Hash-based)
+* 📊 Report Generation
+* ⬇️ Download Organized ZIP
+* ☁️ Cloud Deployment Ready (Render)
+
+---
+
+### 🧰 Technologies
+
+* Python
+* Flask
+* OS Module
+* Shutil
+* Zipfile
+* Hashlib
+* Tempfile
+* UUID
+* HTML5
+* CSS3
+* Gunicorn
+
+---
+
+### 📁 Folder:
+
 `Task1-Python-Automation`
 
 ---
@@ -54,17 +84,19 @@ Python-Intern/
 ## 🔹 Task 2 - Weather API Integration
 
 ### Features
-- Real-Time Weather Data
-- API Integration
-- JSON Parsing
-- Search by City
-- Error Handling
+
+* Real-Time Weather Data
+* API Integration
+* JSON Parsing
+* Search by City
+* Error Handling
 
 ### Technologies
-- Python
-- Requests
-- REST API
-- JSON
+
+* Python
+* Requests
+* REST API
+* JSON
 
 📁 Folder:
 `Task2-Weather-API`
@@ -74,17 +106,19 @@ Python-Intern/
 ## 🔹 Task 3 - Flask Todo Application
 
 ### Features
-- Add Tasks
-- Delete Tasks
-- Responsive UI
-- Flask Routing
-- Bootstrap Design
+
+* Add Tasks
+* Delete Tasks
+* Responsive UI
+* Flask Routing
+* Bootstrap Design
 
 ### Technologies
-- Flask
-- HTML
-- Bootstrap
-- Python
+
+* Flask
+* HTML
+* Bootstrap
+* Python
 
 📁 Folder:
 `Task3-Flask-Todo-App`
@@ -93,13 +127,15 @@ Python-Intern/
 
 ## 🛠 Skills Demonstrated
 
-- Python Programming
-- Automation Scripting
-- API Integration
-- JSON Processing
-- Flask Development
-- Error Handling
-- Git & GitHub
+* Python Programming
+* Automation Scripting
+* API Integration
+* JSON Processing
+* Flask Development
+* File Handling
+* Cloud Deployment
+* Error Handling
+* Git & GitHub
 
 ---
 
@@ -107,14 +143,7 @@ Python-Intern/
 
 **Madhiyarasu D D**
 
-Python Developer | Java Developer | Student
+Python-Java Learner | Web Developer | Student
 
 ---
-=======
-# InternSpark-Internship
-🚀 InternSpark Internship Projects Portfolio — A collection of 3 real-world Python &amp; Flask projects: Automation Tool, WeatherSphere API App, and TaskNest Productivity Manager. Features include REST API integration, SQLite database, file automation, analytics, PDF reports, and responsive UI. Built for deployment &amp; learning excellence.
->>>>>>> ef3bcb90ace86110c4ea1554026b48619c6c643b
-=======
-# InternSpark-Internship
-🚀 InternSpark Internship Projects Portfolio — A collection of 3 real-world Python &amp; Flask projects: Automation Tool, WeatherSphere API App, and TaskNest Productivity Manager. Features include REST API integration, SQLite database, file automation, analytics, PDF reports, and responsive UI. Built for deployment &amp; learning excellence.
->>>>>>> ef3bcb90ace86110c4ea1554026b48619c6c643b
+

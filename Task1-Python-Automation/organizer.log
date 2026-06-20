@@ -122,3 +122,26 @@
 2026-06-20 09:11:45,625 - INFO - 127.0.0.1 - - [20/Jun/2026 09:11:45] "GET /static/style.css HTTP/1.1" 200 -
 2026-06-20 09:12:42,898 - INFO - 127.0.0.1 - - [20/Jun/2026 09:12:42] "GET / HTTP/1.1" 200 -
 2026-06-20 09:12:43,022 - INFO - 127.0.0.1 - - [20/Jun/2026 09:12:43] "GET /static/style.css HTTP/1.1" 200 -
+2026-06-20 13:58:18,180 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.69.57.11:5000
+2026-06-20 13:58:18,180 - INFO - [33mPress CTRL+C to quit[0m
+2026-06-20 13:58:18,181 - INFO -  * Restarting with stat
+2026-06-20 13:58:18,462 - WARNING -  * Debugger is active!
+2026-06-20 13:58:18,465 - INFO -  * Debugger PIN: 157-751-358
+2026-06-20 13:58:31,708 - INFO - 127.0.0.1 - - [20/Jun/2026 13:58:31] "GET / HTTP/1.1" 200 -
+2026-06-20 13:58:31,927 - INFO - 127.0.0.1 - - [20/Jun/2026 13:58:31] "GET /static/style.css HTTP/1.1" 200 -
+2026-06-20 13:58:32,599 - INFO - 127.0.0.1 - - [20/Jun/2026 13:58:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-06-20 13:59:16,885 - INFO - 127.0.0.1 - - [20/Jun/2026 13:59:16] "GET / HTTP/1.1" 200 -
+2026-06-20 13:59:16,917 - INFO - 127.0.0.1 - - [20/Jun/2026 13:59:16] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-06-20 14:00:55,998 - INFO - 127.0.0.1 - - [20/Jun/2026 14:00:55] "GET / HTTP/1.1" 200 -
+2026-06-20 14:00:56,030 - INFO - 127.0.0.1 - - [20/Jun/2026 14:00:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-06-20 14:01:28,703 - INFO - 127.0.0.1 - - [20/Jun/2026 14:01:28] "GET / HTTP/1.1" 200 -
+2026-06-20 14:01:28,736 - INFO - 127.0.0.1 - - [20/Jun/2026 14:01:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-06-20 14:03:32,126 - INFO - 127.0.0.1 - - [20/Jun/2026 14:03:32] "GET / HTTP/1.1" 200 -
+2026-06-20 14:03:32,167 - INFO - 127.0.0.1 - - [20/Jun/2026 14:03:32] "GET /static/style.css HTTP/1.1" 200 -
+2026-06-20 14:04:05,672 - INFO - 127.0.0.1 - - [20/Jun/2026 14:04:05] "GET / HTTP/1.1" 200 -
+2026-06-20 14:04:05,722 - INFO - 127.0.0.1 - - [20/Jun/2026 14:04:05] "GET /static/style.css HTTP/1.1" 200 -
+2026-06-20 14:09:18,442 - INFO -  * Detected change in 'C:\\Users\\arasa\\OneDrive\\Desktop\\PROJECTS\\InternSpark-Internship\\Task1-Python-Automation\\app.py', reloading
+2026-06-20 14:09:18,525 - INFO -  * Restarting with stat

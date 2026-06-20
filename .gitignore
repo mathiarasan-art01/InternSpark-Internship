@@ -1,3 +1,7 @@
 .venv/
 __pycache__/
 *.pyc
+
+# Generated app outputs
+Task1-Python-Automation/outputs/
+outputs/
