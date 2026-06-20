@@ -1,70 +1,82 @@
-🪺 TaskNest — Smart Task & Notes Manager
+# 🪺 TaskNest — Smart Task & Notes Manager (Flask Web Application)
 
-A modern productivity web application built with Flask, SQLite, and Bootstrap 5, designed to help users manage daily tasks, organize notes, track progress, and generate professional productivity reports.
+## 📌 Overview
 
-TaskNest combines a clean glassmorphic user interface with practical productivity tools, making task management simple, elegant, and efficient.
+TaskNest is a modern productivity web application built using **Flask, SQLite, and Bootstrap 5**.
+It is designed to help users efficiently manage daily tasks, organize personal notes, track productivity progress, and generate professional reports.
+
+TaskNest combines a clean **glassmorphic UI design** with practical productivity tools, making task management simple, elegant, and highly efficient.
 
 ---
 
 ## 📌 Features
 
 ### ✅ Task Management
-- Create, edit, update, and delete tasks  
-- Mark tasks as completed or pending  
-- Assign categories and priorities  
-- Set due dates  
-- Filter and search tasks instantly  
+
+* Create, edit, update, and delete tasks
+* Mark tasks as completed or pending
+* Assign categories and priorities
+* Set due dates
+* Filter and search tasks instantly
 
 ---
 
 ### 📝 Sticky Notes
-- Create colorful quick notes  
-- Organize ideas and reminders  
-- Delete notes when no longer needed  
+
+* Create colorful quick notes
+* Organize ideas and reminders
+* Delete notes when no longer needed
 
 ---
 
 ### 📊 Analytics Dashboard
-- View productivity statistics  
-- Track completed vs pending tasks  
-- Category-wise task breakdown  
-- Priority-based insights  
+
+* View productivity statistics
+* Track completed vs pending tasks
+* Category-wise task breakdown
+* Priority-based insights
 
 ---
 
 ### 📄 PDF Report Export
-- Generate downloadable productivity reports  
-- Includes task summary and statistics  
-- Lists all current tasks in a professional PDF format  
+
+* Generate downloadable productivity reports
+* Includes task summary and statistics
+* Lists all current tasks in a professional PDF format
 
 ---
 
 ### 🎨 Modern UI
-- Responsive design  
-- Glassmorphism-inspired interface  
-- Dark / Light theme support  
-- Smooth animations and transitions  
+
+* Responsive design
+* Glassmorphism-inspired interface
+* Dark / Light theme support
+* Smooth animations and transitions
 
 ---
 
 ## 🛠️ Technologies Used
 
 ### Backend
-- Python 3  
-- Flask  
+
+* Python 3
+* Flask
 
 ### Database
-- SQLite3  
+
+* SQLite3
 
 ### Frontend
-- HTML5  
-- CSS3  
-- Bootstrap 5  
-- JavaScript  
+
+* HTML5
+* CSS3
+* Bootstrap 5
+* JavaScript
 
 ### Libraries
-- ReportLab (PDF generation)  
-- Jinja2 Templates  
+
+* ReportLab (PDF generation)
+* Jinja2 Templates
 
 ---
 
@@ -112,7 +124,7 @@ TaskNest/
     ├── layouts/
     ├── pages/
     └── errors/
-````
+```
 
 ---
 
@@ -129,19 +141,14 @@ cd tasknest
 
 ### 2. Create Virtual Environment
 
-#### Windows:
+**Windows:**
 
 ```bash
 python -m venv .venv
-```
-
-Activate:
-
-```bash
 .venv\Scripts\activate
 ```
 
-#### Linux / Mac:
+**Linux / Mac:**
 
 ```bash
 python3 -m venv .venv
@@ -164,9 +171,9 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Open:
+Open in browser:
 
-```text
+```
 http://127.0.0.1:5000
 ```
 
@@ -174,30 +181,26 @@ http://127.0.0.1:5000
 
 ## 📸 Key Modules
 
-### Dashboard
-
-Central hub displaying:
+### 📊 Dashboard
 
 * Task list
-* Notes
-* Statistics
-* Filters
+* Notes overview
+* Statistics summary
+* Filters and controls
 
 ---
 
-### Analytics
+### 📈 Analytics
 
-Provides:
-
-* Completion rate
-* Task distribution
-* Productivity insights
+* Completion rate tracking
+* Task distribution insights
+* Productivity analysis
 
 ---
 
-### PDF Export
+### 📄 PDF Export
 
-Generates a downloadable report containing:
+Generates a professional report containing:
 
 * Total tasks
 * Completed tasks
@@ -216,10 +219,10 @@ This project demonstrates:
 * SQLite Database Operations
 * CRUD Functionality
 * Form Validation
-* PDF Generation with ReportLab
+* PDF Generation using ReportLab
 * Responsive UI Design
 * Dark/Light Theme Implementation
-* Service-Based Project Organization
+* Service-Based Project Design
 
 ---
 
@@ -238,9 +241,9 @@ This project demonstrates:
 
 ## 👨‍💻 Internship Project
 
-Task 3 – Advanced To-Do List Web Application
+**Task 3 – Advanced To-Do List Web Application**
 
-Developed as part of a Python Internship Program to demonstrate practical skills in:
+Developed as part of a Python Internship Program to demonstrate:
 
 * Python Development
 * Flask Framework
@@ -252,11 +255,15 @@ Developed as part of a Python Internship Program to demonstrate practical skills
 
 ## 📜 License
 
-This project is created for educational and internship purposes.
+This project is created for **educational and internship purposes**.
 
 ---
 
-💙 Built with Flask, SQLite, Bootstrap & Python
+## 💙 Final Note
 
-TaskNest — Organize Tasks. Track Progress. Stay Productive. 🪺✨
+Built with **Flask, SQLite, Bootstrap & Python**
+
+> TaskNest — Organize Tasks. Track Progress. Stay Productive. 🪺✨
+
+---
 
