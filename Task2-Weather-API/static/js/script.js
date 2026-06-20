@@ -7,15 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     cards.forEach(card => {
 
         card.addEventListener("mouseenter", () => {
-
-            card.style.transform = "scale(1.05)";
-
+            card.style.transform = "translateY(-5px)";
         });
 
         card.addEventListener("mouseleave", () => {
-
-            card.style.transform = "scale(1)";
-
+            card.style.transform = "translateY(0)";
         });
 
     });

@@ -7,7 +7,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # API Key from Environment Variable
-API_KEY = os.getenv("WEATHER_API_KEY")
+API_KEY = os.environ.get("WEATHER_API_KEY", "0eb0eb97f76f4bbe891163315261806")
 
 # CSV file to store search history
 CSV_FILE = "weather_data.csv"
