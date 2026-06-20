@@ -6,11 +6,16 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-API_KEY = os.environ.get("WEATHER_API_KEY", "0eb0eb97f76f4bbe891163315261806")
+# API Key from Environment Variable
+API_KEY = os.getenv("WEATHER_API_KEY")
+
+# CSV file to store search history
 CSV_FILE = "weather_data.csv"
 
 
 def save_search(city, temp):
+    """Save searched city and temperature to CSV."""
+
     df = pd.DataFrame({
         "Date": [datetime.now()],
         "City": [city],
@@ -25,6 +30,7 @@ def save_search(city, temp):
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+
     weather = None
     error = None
 
@@ -34,6 +40,9 @@ def home():
 
         if not city:
             error = "Please enter a city name."
+
+        elif not API_KEY:
+            error = "Weather API key is not configured."
 
         else:
             try:
@@ -51,16 +60,27 @@ def home():
 
                 weather = response.json()
 
-                save_search(
-                    city,
-                    weather["current"]["temp_c"]
-                )
+                # WeatherAPI may return an error object
+                if "error" in weather:
+                    error = weather["error"]["message"]
+                    weather = None
+                else:
+                    save_search(
+                        city,
+                        weather["current"]["temp_c"]
+                    )
+
+            except requests.exceptions.Timeout:
+                error = "Request timed out. Please try again."
+
+            except requests.exceptions.ConnectionError:
+                error = "Unable to connect to Weather API."
 
             except requests.exceptions.RequestException:
-                error = "Unable to fetch weather data."
+                error = "Failed to fetch weather data."
 
             except Exception as e:
-                error = str(e)
+                error = f"Unexpected Error: {str(e)}"
 
     return render_template(
         "index.html",
@@ -70,4 +90,8 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=True
+    )
