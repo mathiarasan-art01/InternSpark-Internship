@@ -6,7 +6,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-API_KEY = "0eb0eb97f76f4bbe891163315261806"
+API_KEY = os.environ.get("WEATHER_API_KEY", "0eb0eb97f76f4bbe891163315261806")
 CSV_FILE = "weather_data.csv"
 
 
