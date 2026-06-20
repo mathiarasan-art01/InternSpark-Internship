@@ -1,0 +1,53 @@
+{% extends "layouts/base.html" %}
+{% block title %}Analytics · TaskNest{% endblock %}
+{% block content %}
+<section class="glass p-4 mb-4">
+  <h1 class="section-title">📈 Analytics</h1>
+  <div class="stat-grid mt-3">
+    <div class="stat-card"><span class="stat-label">Total</span><span class="stat-value">{{ stats.total }}</span></div>
+    <div class="stat-card"><span class="stat-label">Done</span><span class="stat-value text-success">{{ stats.done }}</span></div>
+    <div class="stat-card"><span class="stat-label">Pending</span><span class="stat-value text-warning">{{ stats.pending }}</span></div>
+    <div class="stat-card progress-card">
+      <span class="stat-label">Completion</span>
+      <span class="stat-value">{{ stats.pct }}%</span>
+      <div class="progress mt-2"><div class="progress-bar" style="width: {{ stats.pct }}%"></div></div>
+    </div>
+  </div>
+</section>
+<div class="row g-4">
+  <div class="col-md-6">
+    <section class="glass p-4">
+      <h2 class="section-title">📂 By category</h2>
+      {% if by_category %}
+        <ul class="bar-list mt-3">
+          {% for r in by_category %}
+            {% set pct = (r.done / r.n * 100)|round(0, 'floor') if r.n else 0 %}
+            <li>
+              <div class="d-flex justify-content-between"><strong>{{ r.category }}</strong>
+                <span class="text-muted small">{{ r.done }}/{{ r.n }}</span></div>
+              <div class="progress"><div class="progress-bar" style="width: {{ pct }}%"></div></div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}<p class="text-muted">No data yet.</p>{% endif %}
+    </section>
+  </div>
+  <div class="col-md-6">
+    <section class="glass p-4">
+      <h2 class="section-title">⚡ By priority</h2>
+      {% if by_priority %}
+        <ul class="bar-list mt-3">
+          {% for r in by_priority %}
+            {% set pct = (r.done / r.n * 100)|round(0, 'floor') if r.n else 0 %}
+            <li>
+              <div class="d-flex justify-content-between"><strong>{{ r.priority }}</strong>
+                <span class="text-muted small">{{ r.done }}/{{ r.n }}</span></div>
+              <div class="progress"><div class="progress-bar" style="width: {{ pct }}%"></div></div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}<p class="text-muted">No data yet.</p>{% endif %}
+    </section>
+  </div>
+</div>
+{% endblock %}

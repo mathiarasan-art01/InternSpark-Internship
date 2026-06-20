@@ -1,0 +1,10 @@
+{% extends "layouts/base.html" %}
+{% block title %}404 · TaskNest{% endblock %}
+{% block content %}
+<section class="glass text-center p-5">
+  <div style="font-size: 4rem">🪹</div>
+  <h1 class="section-title">404 — Page not found</h1>
+  <p class="text-muted">The page you’re looking for has flown the nest.</p>
+  <a href="{{ url_for('tasks.dashboard') }}" class="btn btn-primary-grad mt-2">← Back to dashboard</a>
+</section>
+{% endblock %}

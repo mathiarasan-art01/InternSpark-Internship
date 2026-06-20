@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>WeatherSphere</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script defer
+            src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <h1>🌦 WeatherSphere</h1>
+
+    <p class="subtitle">
+        Real-Time Climate Intelligence Dashboard
+    </p>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="city"
+            placeholder="Enter City Name"
+            required>
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+    {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    {% if weather %}
+
+    <div class="weather-card">
+
+        <h2>
+            {{ weather.location.name }},
+            {{ weather.location.country }}
+        </h2>
+
+        <img src="{{ weather.current.condition.icon }}">
+
+        <h1>{{ weather.current.temp_c }} °C</h1>
+
+        <p>{{ weather.current.condition.text }}</p>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            Humidity
+            <span>
+                {{ weather.current.humidity }}%
+            </span>
+        </div>
+
+        <div class="card">
+            Wind
+            <span>
+                {{ weather.current.wind_kph }} km/h
+            </span>
+        </div>
+
+        <div class="card">
+            Pressure
+            <span>
+                {{ weather.current.pressure_mb }} mb
+            </span>
+        </div>
+
+        <div class="card">
+            Visibility
+            <span>
+                {{ weather.current.vis_km }} km
+            </span>
+        </div>
+
+        <div class="card">
+            UV Index
+            <span>
+                {{ weather.current.uv }}
+            </span>
+        </div>
+
+        <div class="card">
+            Feels Like
+            <span>
+                {{ weather.current.feelslike_c }} °C
+            </span>
+        </div>
+
+    </div>
+
+    <h2>🌅 Astronomy</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            Sunrise
+            <span>
+            {{ weather.forecast.forecastday[0].astro.sunrise }}
+            </span>
+        </div>
+
+        <div class="card">
+            Sunset
+            <span>
+            {{ weather.forecast.forecastday[0].astro.sunset }}
+            </span>
+        </div>
+
+    </div>
+
+    <h2>📅 7-Day Forecast</h2>
+
+    <div class="forecast">
+
+        {% for day in weather.forecast.forecastday %}
+
+        <div class="forecast-card">
+
+            <p>{{ day.date }}</p>
+
+            <img src="{{ day.day.condition.icon }}">
+
+            <h3>{{ day.day.avgtemp_c }}°C</h3>
+
+            <p>{{ day.day.condition.text }}</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html> 

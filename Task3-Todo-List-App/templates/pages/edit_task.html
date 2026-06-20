@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+{% block title %}Edit task · TaskNest{% endblock %}
+{% block content %}
+<section class="glass p-4 p-md-5 mx-auto" style="max-width: 720px">
+  <h1 class="section-title">✏️ Edit task</h1>
+  <form method="post" class="row g-3 mt-1">
+    <div class="col-12">
+      <label class="form-label">Title</label>
+      <input name="title" class="form-control" required maxlength="120" value="{{ task.title }}" />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Category</label>
+      <select name="category" class="form-select">
+        {% for c in categories %}
+          <option {% if task.category==c %}selected{% endif %}>{{ c }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Priority</label>
+      <select name="priority" class="form-select">
+        {% for p in priorities %}
+          <option {% if task.priority==p %}selected{% endif %}>{{ p }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Due date</label>
+      <input type="date" name="due_date" class="form-control" value="{{ task.due_date or '' }}" />
+    </div>
+    <div class="col-12">
+      <label class="form-label">Description</label>
+      <textarea name="description" class="form-control" rows="4">{{ task.description }}</textarea>
+    </div>
+    <div class="col-12 d-flex justify-content-between">
+      <a href="{{ url_for('tasks.dashboard') }}" class="btn btn-ghost">← Back</a>
+      <button class="btn btn-primary-grad">Save changes</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

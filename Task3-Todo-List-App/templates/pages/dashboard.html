@@ -1,0 +1,112 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<section class="hero glass mb-4 p-4 p-md-5">
+  <div class="row align-items-center g-4">
+    <div class="col-md-7">
+      <span class="pill">1.0 · Flask Task & Notes Web APP</span>
+      <h1 class="hero-title mt-3">
+  Turn your goals into <span class="accent">daily progress</span>.</h1>
+      <p class="hero-sub">A calm digital space to plan your day, save quick thoughts, and stay focused — minimal, smooth, and distraction-free.</p>
+      <div class="d-flex flex-wrap gap-2 mt-3">
+        <a href="{{ url_for('tasks.add_task') }}" class="btn btn-primary-grad">＋ Add a task</a>
+        <a href="#notes" class="btn btn-ghost">📝 Quick notes</a>
+        <a href="{{ url_for('tasks.analytics') }}" class="btn btn-ghost">📈 Analytics</a>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="stat-grid">
+        <div class="stat-card"><span class="stat-label">Total</span><span class="stat-value">{{ stats.total }}</span></div>
+        <div class="stat-card"><span class="stat-label">Done</span><span class="stat-value text-success">{{ stats.done }}</span></div>
+        <div class="stat-card"><span class="stat-label">Pending</span><span class="stat-value text-warning">{{ stats.pending }}</span></div>
+        <div class="stat-card progress-card">
+          <span class="stat-label">Progress</span>
+          <span class="stat-value">{{ stats.pct }}%</span>
+          <div class="progress mt-2"><div class="progress-bar" style="width: {{ stats.pct }}%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="glass p-4 mb-4">
+  <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+    <h2 class="section-title m-0">📋 Tasks</h2>
+    <form class="d-flex flex-wrap gap-2" method="get" action="{{ url_for('tasks.dashboard') }}">
+      <input name="q" value="{{ filters.q }}" class="form-control form-control-sm" placeholder="Search…" />
+      <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+        <option value="all" {% if filters.status=='all' %}selected{% endif %}>All</option>
+        <option value="active" {% if filters.status=='active' %}selected{% endif %}>Active</option>
+        <option value="completed" {% if filters.status=='completed' %}selected{% endif %}>Completed</option>
+      </select>
+      <select name="category" class="form-select form-select-sm" onchange="this.form.submit()">
+        <option value="all">All categories</option>
+        {% for c in categories %}
+          <option value="{{ c }}" {% if filters.category==c %}selected{% endif %}>{{ c }}</option>
+        {% endfor %}
+      </select>
+      <button class="btn btn-ghost btn-sm">Apply</button>
+    </form>
+  </div>
+  {% if tasks %}
+    <ul class="task-list">
+      {% for t in tasks %}
+        <li class="task-card prio-{{ t.priority|lower }} {% if t.completed %}done{% endif %}">
+          <form method="post" action="{{ url_for('tasks.toggle_task', task_id=t.id) }}" class="check-form">
+            <button class="check" title="Toggle complete">{% if t.completed %}✓{% endif %}</button>
+          </form>
+          <div class="task-body">
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <span class="task-title">{{ t.title }}</span>
+              <span class="tag tag-cat">{{ t.category }}</span>
+              <span class="tag tag-prio">{{ t.priority }}</span>
+              {% if t.due_date %}<span class="tag tag-date">📅 {{ t.due_date|nicedate }}</span>{% endif %}
+            </div>
+            {% if t.description %}<p class="task-desc">{{ t.description }}</p>{% endif %}
+          </div>
+          <div class="task-actions">
+            <a class="btn btn-ghost btn-sm" href="{{ url_for('tasks.edit_task', task_id=t.id) }}">Edit</a>
+            <form method="post" action="{{ url_for('tasks.delete_task', task_id=t.id) }}"
+                  onsubmit="return confirm('Delete this task?')">
+              <button class="btn btn-danger-soft btn-sm">Delete</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">
+      <div class="empty-emoji">🪹</div>
+      <p>The nest is empty. <a href="{{ url_for('tasks.add_task') }}">Add your first task</a>!</p>
+    </div>
+  {% endif %}
+</section>
+<section id="notes" class="glass p-4 mb-5">
+  <h2 class="section-title">🗒️ Quick notes</h2>
+  <form method="post" action="{{ url_for('tasks.create_note') }}" class="row g-2 mt-1">
+    <div class="col-md-9">
+      <input name="content" class="form-control" placeholder="Capture a thought…" required maxlength="240" />
+    </div>
+    <div class="col-md-2">
+      <select name="color" class="form-select">
+        <option value="mint">Mint</option><option value="peach">Peach</option>
+        <option value="sky">Sky</option><option value="lilac">Lilac</option>
+        <option value="lemon">Lemon</option>
+      </select>
+    </div>
+    <div class="col-md-1 d-grid"><button class="btn btn-primary-grad">Pin</button></div>
+  </form>
+  {% if notes %}
+    <div class="notes-grid mt-3">
+      {% for n in notes %}
+        <div class="note note-{{ n.color }}">
+          <p>{{ n.content }}</p>
+          <form method="post" action="{{ url_for('tasks.delete_note', note_id=n.id) }}">
+            <button class="note-x" title="Delete note">×</button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-muted mt-3 mb-0">No notes yet — pin your first thought above.</p>
+  {% endif %}
+</section>
+{% endblock %}

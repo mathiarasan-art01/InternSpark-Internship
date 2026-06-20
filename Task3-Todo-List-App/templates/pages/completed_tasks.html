@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+{% block title %}Completed · TaskNest{% endblock %}
+{% block content %}
+<section class="glass p-4 mb-4">
+  <h1 class="section-title">✅ Completed tasks</h1>
+  {% if tasks %}
+    <ul class="task-list mt-3">
+      {% for t in tasks %}
+        <li class="task-card prio-{{ t.priority|lower }} done">
+          <span class="check">✓</span>
+          <div class="task-body">
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <span class="task-title">{{ t.title }}</span>
+              <span class="tag tag-cat">{{ t.category }}</span>
+              <span class="tag tag-prio">{{ t.priority }}</span>
+            </div>
+            {% if t.description %}<p class="task-desc">{{ t.description }}</p>{% endif %}
+          </div>
+          <div class="task-actions">
+            <form method="post" action="{{ url_for('tasks.toggle_task', task_id=t.id) }}">
+              <button class="btn btn-ghost btn-sm">Reopen</button>
+            </form>
+            <form method="post" action="{{ url_for('tasks.delete_task', task_id=t.id) }}"
+                  onsubmit="return confirm('Delete this task?')">
+              <button class="btn btn-danger-soft btn-sm">Delete</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-muted mt-3 mb-0">Nothing completed yet — get to work! 💪</p>
+  {% endif %}
+</section>
+{% endblock %}

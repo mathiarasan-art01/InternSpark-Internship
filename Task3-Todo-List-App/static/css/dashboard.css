@@ -1,0 +1,134 @@
+/* Dashboard Task List Layout */
+.task-list { 
+  list-style: none; 
+  padding: 0; 
+  display: grid; 
+  gap: 1rem; 
+}
+
+.task-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  border-radius: 20px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: var(--glass-strong);
+  box-shadow: var(--shadow);
+}
+
+.task-card.prio-high   { border-left-color: var(--danger); }
+.task-card.prio-medium { border-left-color: var(--warning); }
+.task-card.prio-low    { border-left-color: var(--success); }
+
+/* Completed State Adjustments */
+.task-card.done {
+  opacity: 0.6;
+}
+.task-card.done .task-title {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* Circular Check Buttons */
+.check {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+.task-card.done .check {
+  background: var(--success);
+  color: var(--text-inverse);
+  border-color: var(--success);
+}
+
+.task-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.task-desc {
+  color: var(--muted);
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+}
+
+/* Dynamic Tags */
+.tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.tag-prio { background: rgba(99, 102, 241, 0.12); color: var(--primary); }
+.tag-cat  { background: rgba(56, 189, 248, 0.12); color: var(--primary-2); }
+.tag-date { background: rgba(245, 158, 11, 0.12); color: var(--warning); }
+
+/* Modern Analytics Section Fixes */
+.analytics-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.analytics-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+
+.analytics-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.analytics-item:last-child {
+  border-bottom: none;
+}
+
+/* Colorful Sticky Notes Grid */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.note {
+  position: relative;
+  padding: 1.25rem;
+  border-radius: 18px;
+  min-height: 140px;
+  color: #0f172a; /* Solid dark text font for notes across both themes */
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+.note:hover {
+  transform: translateY(-4px) rotate(0.5deg);
+}
+
+.note-mint  { background: #c6f6d5; border: 1px solid #9ae6b4; }
+.note-peach { background: #feebc8; border: 1px solid #fbd38d; }
+.note-sky   { background: #bee3f8; border: 1px solid #90cdf4; }
+.note-lilac { background: #e9d8fd; border: 1px solid #d6bcfa; }
+.note-lemon { background: #fefcbf; border: 1px solid #faf089; }
